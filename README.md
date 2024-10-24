@@ -1,10 +1,4 @@
 # sodoku_solver
-Qué hace el proyecto:
-#asdfasd
-Por qué el proyecto es útil.
 
-Cómo pueden comenzar los usuarios con el proyecto.
-
-Dónde pueden recibir ayuda los usuarios con tu proyecto
-
-Quién mantiene y contribuye con el proyecto.
+This is a sodoku solver "recreated" from this guy to learn Backtracking:
+https://www.youtube.com/watch?v=ip2jC_kXGtg (it's in spanish)

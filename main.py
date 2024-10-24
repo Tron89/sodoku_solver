@@ -5,6 +5,7 @@ import pyautogui
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 from sudokusolver import SudokuSolver
+import time
 
 def main():
     pyautogui.hotkey("alt", "tab", interval=0.1)
@@ -18,6 +19,7 @@ def main():
     sudoku = SudokuSolver(sudoku_vec)
     sudoku_solved = sudoku.solve()
     solve_on_website(sudoku_contour, sudoku_solved)
+
 
 def preprocess(screenshot):
     gray = cv2.cvtColor(screenshot, cv2.COLOR_BGR2GRAY)
@@ -81,12 +83,11 @@ def predict_digit(img, knn):
     return prediction
 
 
-
 def create_knn_model():
     df = pd.read_csv("dataset.csv")
     x = df.iloc[:, :-1].values
     y = df.iloc[:, -1].values
-    knn = KNeighborsClassifier(n_neighbors=1)
+    knn = KNeighborsClassifier(n_neighbors=3)
     knn.fit(x, y)
     return knn
 
@@ -94,18 +95,11 @@ def create_knn_model():
 def solve_on_website(sudoku_contour, solved):
     x, y, w, h = cv2.boundingRect(sudoku_contour)
     square_size = h // 9
+    print(solved)
     for i in range(9):
         for j in range(9):
             pyautogui.click(x + j*square_size + square_size//2, y + i*square_size + square_size//2, _pause=False)
             pyautogui.press(str(solved[i,j]), _pause=False)
-            
-
-
-
-
-
-
-
-
+        
 
 main()

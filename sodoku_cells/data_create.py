@@ -18,13 +18,11 @@ for actual_path, directories, files in os.walk(os.getcwd()):
             print(thresh)
             print(len(thresh[0]))
             img_num = np.append(thresh, i)
-            #img_vec = img_num.reshape(1, -1)
             img_list.append(img_num)
         i += 1
 
-#combierte la lista en bidimensional
 img_vec_2d = np.vstack(img_list)
 df = pd.DataFrame(img_vec_2d)
 
 df.to_csv("dataset.csv", index=False)
-input("mision cumplida ")
+input("Mision completed")

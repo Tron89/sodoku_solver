@@ -57,4 +57,3 @@ class SudokuSolver:
     def can_place_number(self, i, j, number):
         return self.bitmap[i][j][number-1]
     
-#estaria bien optimizar con "movimientos triviales"
